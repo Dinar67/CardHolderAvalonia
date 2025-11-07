@@ -25,4 +25,9 @@
     <ItemGroup>
         <ProjectReference Include="..\CardHolder\CardHolder.csproj"/>
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Resources\drawable-night-v31\" />
+      <Folder Include="Resources\drawable-v31\" />
+    </ItemGroup>
 </Project>
