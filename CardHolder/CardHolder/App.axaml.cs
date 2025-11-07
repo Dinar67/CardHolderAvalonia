@@ -1,9 +1,12 @@
+using System;
+using System.IO;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
+using CardHolder.Services;
 using CardHolder.ViewModels;
 using CardHolder.Views;
 
@@ -11,6 +14,7 @@ namespace CardHolder;
 
 public partial class App : Application
 {
+    public static FileDatabase db = new FileDatabase();
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -27,6 +31,9 @@ public partial class App : Application
             {
                 DataContext = new MainViewModel()
             };
+            // var db = new FileDatabase();
+            // db.Add(new Card(Guid.NewGuid().ToString(), "Test2", null, null));
+            // db.SaveChanges();
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
