@@ -51,14 +51,14 @@
                             VerticalContentAlignment="Center"
                             Margin="0 0 0 5"
                             CornerRadius="10">
-                        ✏️
+                        <Image Source="../Resources/Images/edit.png"></Image>
                     </Button>
                     <Button Width="33"
                             Command="{Binding DeleteCommand}"
                             HorizontalContentAlignment="Center"
                             VerticalContentAlignment="Center"
                             CornerRadius="10">
-                        🗑️
+                        <Image Source="../Resources/Images/delete.png"></Image>
                     </Button>
                 </StackPanel>
                 

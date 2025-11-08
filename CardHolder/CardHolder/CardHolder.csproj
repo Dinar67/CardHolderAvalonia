@@ -25,4 +25,15 @@
     <ItemGroup>
       <Folder Include="Resources\Images\" />
     </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\Images\edit.png" />
+      <AvaloniaResource Include="Resources\Images\edit.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <None Remove="Resources\Images\delete.png" />
+      <AvaloniaResource Include="Resources\Images\delete.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+    </ItemGroup>
 </Project>

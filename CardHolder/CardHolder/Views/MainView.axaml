@@ -13,7 +13,7 @@
         <vm:MainViewModel></vm:MainViewModel>
     </UserControl.DataContext>
 
-    <Grid>
+    <Grid Margin="0 30 0 0">
         <ContentControl Name="Control"></ContentControl>
         
         <Rectangle x:Name="MessageBackground" IsVisible="False" Opacity="0.5" Fill="Black"></Rectangle>

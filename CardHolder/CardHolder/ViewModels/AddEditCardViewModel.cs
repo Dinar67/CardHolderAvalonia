@@ -60,13 +60,17 @@ public class AddEditCardViewModel : ViewModelBase
 
     private async Task EditQrImage()
     {
-        QrImage = await FileSelector.SelectImage();
+        var image = await FileSelector.SelectImage();
+        if(image == null) return;
+        QrImage = image;
         var bytes = ImageHelper.GetBytesFromImage(QrImage);
         Card.CodeImageBytes = bytes;
     }
     private async Task EditLogoImage()
     {
-        var bytes = ImageHelper.GetBytesFromImage(await FileSelector.SelectImage());
+        var image = await FileSelector.SelectImage();
+        if(image == null) return;
+        var bytes = ImageHelper.GetBytesFromImage(image);
         Card.CardImageBytes = bytes;
     }
     private void Save()
