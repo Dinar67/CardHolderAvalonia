@@ -1,0 +1,27 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" MinWidth="200" MinHeight="150"
+             x:Class="CardHolder.Views.YesNoControl">
+    <Grid>
+        <Border Background="White" CornerRadius="10" ClipToBounds="True">
+            <StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="MessageTb" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="0 0 0 10"></TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="YesBtn" Background="#cf4a4a" Click="YesBtn_Click" Width="80" Height="30" Margin="0 0 10 0">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">
+                            Да
+                        </TextBlock>
+                    </Button>
+                    <Button x:Name="NoBtn" Background="#77cf4a" Click="NoBtn_Click" Width="80" Height="30">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">
+                            Нет
+                        </TextBlock>
+                    </Button>
+                </StackPanel>
+			
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

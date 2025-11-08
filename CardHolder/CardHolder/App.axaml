@@ -11,5 +11,10 @@
 
     <Application.Styles>
         <FluentTheme />
+        <Styles>
+            <Style Selector="TextBlock">
+                <Setter Property="Foreground" Value="#1a1a1a"></Setter>
+            </Style>
+        </Styles>
     </Application.Styles>
 </Application>

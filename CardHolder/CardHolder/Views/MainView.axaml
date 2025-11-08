@@ -14,6 +14,9 @@
     </UserControl.DataContext>
 
     <Grid>
-        <ContentControl Content="{Binding CurrentControl}"></ContentControl>
+        <ContentControl Name="Control"></ContentControl>
+        
+        <Rectangle x:Name="MessageBackground" IsVisible="False" Opacity="0.5" Fill="Black"></Rectangle>
+        <ContentControl x:Name="MessageContentControl" IsVisible="False" Width="350" Height="300"></ContentControl>
     </Grid>
 </UserControl>

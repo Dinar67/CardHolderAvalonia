@@ -20,5 +20,14 @@
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </ScrollViewer>
+        
+        <Button Command="{Binding AddCommand}"
+                Width="40" Height="40"
+                CornerRadius="10"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Margin="15"
+                FontSize="20"
+                FontWeight="Bold"
+                HorizontalContentAlignment="Center">+</Button>
     </Grid>
 </UserControl>

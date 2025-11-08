@@ -2,7 +2,97 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="CardHolder.Views.AddEditCard">
-    Welcome to Avalonia!
+             xmlns:vm="clr-namespace:CardHolder.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="360" d:DesignHeight="800"
+             x:Class="CardHolder.Views.AddEditCard"
+             x:DataType="vm:AddEditCardViewModel">
+    <UserControl.DataContext>
+        <vm:AddEditCardViewModel></vm:AddEditCardViewModel>
+    </UserControl.DataContext>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 10">
+                <TextBlock Width="75" VerticalAlignment="Center">Id</TextBlock>
+                <TextBlock Text="{Binding Card.Id}"
+                           Width="200"
+                           FontSize="10"
+                           TextWrapping="Wrap"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 10">
+                <TextBlock Width="75"
+                           VerticalAlignment="Center">Название</TextBlock>
+                <TextBox Text="{Binding Card.Name}"
+                         Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" IsVisible="False"
+                        Margin="0 0 0 10">
+                <TextBlock Width="75"
+                           VerticalAlignment="Center">Цвет</TextBlock>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Width="10">R</TextBlock>
+                        <Slider Width="150"
+                                Minimum="0"
+                                Maximum="1"></Slider>
+                        <TextBlock Width="30" Margin="10 0 0 0" VerticalAlignment="Center">255</TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Width="10">G</TextBlock>
+                        <Slider Width="150"
+                                Minimum="0"
+                                Maximum="1"></Slider>
+                        <TextBlock Width="30" Margin="10 0 0 0" VerticalAlignment="Center">255</TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Width="10">B</TextBlock>
+                        <Slider Width="150"
+                                Minimum="0"
+                                Maximum="1"></Slider>
+                        <TextBlock Width="30" Margin="10 0 0 0" VerticalAlignment="Center">255</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <Border Width="275" Height="200"
+                        Background="LightGray" CornerRadius="5"
+                        ClipToBounds="True">
+                    <Image Source="{Binding QrImage}"
+                           Width="275" Height="200" 
+                       Stretch="Uniform"></Image>
+                </Border>
+                <Button Command="{Binding EditQrImageCommand}" 
+                        Height="30"
+                        Margin="0 10 0 0" 
+                        HorizontalAlignment="Stretch">
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center">Загрузить изображение QR кода</TextBlock>
+                </Button>
+            </StackPanel>
+            <Button Command="{Binding EditLogoImageCommand}" 
+                    Height="30"
+                    Margin="0 10 0 0" 
+                    HorizontalAlignment="Stretch">
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center">Загрузить логотип карты</TextBlock>
+            </Button>
+            <Button Command="{Binding SaveCommand}" 
+                    Height="30"
+                    Margin="0 10 0 0" 
+                    HorizontalAlignment="Stretch">
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center">Сохранить</TextBlock>
+            </Button>
+        </StackPanel>
+        <Button Command="{Binding BackCommand}"
+                Height="30"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                 Margin="10">
+            <TextBlock Margin="5 0" 
+                       FontWeight="Bold">Назад</TextBlock>
+        </Button>
+    </Grid>
 </UserControl>
