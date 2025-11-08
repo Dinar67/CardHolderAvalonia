@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Threading.Tasks;
 using CardHolder.Interfaces;
 
 namespace CardHolder.Services;
@@ -73,5 +74,34 @@ public class FileDatabase : IDatabase
             var json = JsonSerializer.Serialize(data.Value, listType, _options);
             File.WriteAllText(path, json);
         }
+    }
+
+    public async Task Export<T>()
+    {
+        if (!_types.Contains(typeof(T))) throw new Exception("That type is not registered in database!");
+        var type = typeof(T);
+        var path = GetPath(type.Name);
+        if (File.Exists(path))
+            FileSelector.SaveFile($"{type.Name}.json", ".json", File.ReadAllBytes(path));
+        else throw new Exception("Нет зарегистрированных элементов в таблице!");
+    }
+    public async Task Improt<T>()
+    {
+        if (!_types.Contains(typeof(T))) throw new Exception("That type is not registered in database!");
+        var type = typeof(T);
+        var path = GetPath(type.Name + "Import");
+        var file = await FileSelector.SelectFile();
+        if (file == null) throw new Exception("Файл для импорта не был выбран!");
+        var ms = new MemoryStream();
+        await (await file.OpenReadAsync()).CopyToAsync(ms);
+        var bytes = ms.ToArray();
+        await File.WriteAllBytesAsync(path, bytes);
+        var listType = typeof(List<>).MakeGenericType(type);
+        var json = await File.ReadAllTextAsync(path);
+        var listObject = (List<T>)JsonSerializer.Deserialize(json, listType, _options);
+        var cards = Get<T>();
+        foreach (var card in listObject)
+            cards.Add(card);
+        App.db.SaveChanges();
     }
 }

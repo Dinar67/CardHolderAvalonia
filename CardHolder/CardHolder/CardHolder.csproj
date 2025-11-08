@@ -8,6 +8,10 @@
 
     <ItemGroup>
         <AvaloniaResource Include="Assets\**"/>
+        <None Remove="Resources\Images\menu.png" />
+        <AvaloniaResource Include="Resources\Images\menu.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </AvaloniaResource>
     </ItemGroup>
 
     <ItemGroup>

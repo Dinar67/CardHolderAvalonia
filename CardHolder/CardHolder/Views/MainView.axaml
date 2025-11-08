@@ -12,11 +12,46 @@
     <UserControl.DataContext>
         <vm:MainViewModel></vm:MainViewModel>
     </UserControl.DataContext>
-
-    <Grid Margin="0 30 0 0">
-        <ContentControl Name="Control"></ContentControl>
-        
+    <Grid>
+        <SplitView OpenPaneLength="250" IsPaneOpen="{Binding IsPaneOpen, Mode=TwoWay}">
+            <SplitView.Pane>
+                <Grid Margin="10 30 10 30">
+                    <StackPanel>
+                        <Button Command="{Binding ImportCommand}"
+                                Height="30"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                Margin="0 0 0 10">
+                            Импортировать
+                        </Button>
+                        <Button Command="{Binding ExportCommand}"
+                                Height="30"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                Margin="0 0 0 10">
+                            Экспортировать
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Grid Margin="0 30 0 0">
+                    <ContentControl Name="Control"></ContentControl>
+                    <Button Command="{Binding OpenPaneCommand}"
+                            Width="40" Height="40"
+                            CornerRadius="10"
+                            HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                            Margin="15"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            HorizontalContentAlignment="Center">
+                        <Image Source="../Resources/Images/menu.png"></Image>
+                    </Button>
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
         <Rectangle x:Name="MessageBackground" IsVisible="False" Opacity="0.5" Fill="Black"></Rectangle>
         <ContentControl x:Name="MessageContentControl" IsVisible="False" Width="350" Height="300"></ContentControl>
     </Grid>
+    
 </UserControl>
